@@ -1,30 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int t, a, b;
 
-#define ll long long
-const int N = 200005;
-int t, n;
-ll arr[N];
 
 int main() {
     ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
     cin >> t;
     while (t--) {
-        cin >> n;
-        ll sum = 0;
-        for (int i = 0; i < n; i++) cin >> arr[i];
-        for (int i = 1; i < n; i++) {
-            sum += abs(arr[i] - arr[i - 1]);
+        cin >> a >> b;
+        int a1 = a, b1 = b;
+        int n1 = 0, n2 = 0;
+        for (int i = 1; i <= a1; i *= 4) {
+            n1++;
+            a1 -= i;
         }
-        ll t1 = abs(arr[0] - arr[1]);
-        ll t2 = abs(arr[n - 1] - arr[n - 2]);
-        ll t3 = LLONG_MIN;
-        for (int i = 1; i < n - 1; i++) {
-            t3 = max(t3, abs(arr[i - 1] - arr[i]) + abs(arr[i] - arr[i + 1]) - abs(arr[i - 1] - arr[i + 1]));
+        for (int i = 2; i <= b1; i *= 4) {
+            n2++;
+            b1 -= i;
         }
-        ll t = max(t1, max(t2, t3));
-        ll ans = sum - t;
+        int cnt1 = n1 * 2 - 1;
+        int cnt2 = n2 * 2;
+        int max1 = abs(cnt1 - cnt2) == 1 ? max(cnt1, cnt2) : min(cnt1, cnt2) + 1;
+        n1 = 0, n2 = 0;
+        a1 = a, b1 = b;
+        for (int i = 1; i <= b1; i *= 4) {
+            n1++;
+            b1 -= i;
+        }
+        for (int i = 2; i <= a1; i *= 4) {
+            n2++;
+            a1 -= i;
+        }
+        cnt1 = n1 * 2 - 1;
+        cnt2 = n2 * 2;
+        int max2 = abs(cnt1 - cnt2) == 1 ? max(cnt1, cnt2) : min(cnt1, cnt2) + 1;
+        int ans = max(max1, max2);
         cout << ans << endl;
     }
     return 0;
