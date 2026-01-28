@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Python_Practice"
+		},
+		{
+			"path": "../Vehicle_Routing_Planning_Project"
+		}
+	],
+	"settings": {
+		"workbench.externalBrowser": "edge"
+	}
+}
