@@ -1,25 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
-const int N = 1005, mod = 1e9 + 7;
-ll T, n, sum, arr[N], dp[N];
+void factorize(int n) {
+    bool first = true; // 标记是否是第一个质因数，用于控制乘号的打印
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            int cnt = 0; // 统计指数
+            // 只要还能被 i 整除，就一直除，统计次数
+            while (n % i == 0) {
+                cnt++;
+                n /= i;
+            }
+            // 打印部分
+            if (!first) {
+                printf(" * "); // 如果不是第一个，前面加乘号
+            }
+            printf("%d^%d", i, cnt);
+            first = false; // 第一个已经打印过了
+        }
+    }
+    // 关键：处理最后剩下的那个质数（如果 n > 1，说明它本身是个质数）
+    if (n > 1) {
+        if (!first) {
+            printf(" * ");
+        }
+        printf("%d^1", n);
+    }
+    printf("\n");
+}
 
 int main() {
-    ios::sync_with_stdio(0), cin.tie(0);
-    cin >> T;
-    while (T--) {
-        cin >> n;
-        sum = 0;
-        for (int i = 1; i <= n; i++) {
-            cin >> arr[i];
-            sum += arr[i];
-        }
-        if (sum % 2 != 0) {
-            cout << 0 << '\n';
-            continue;
-        }
-        cout << 0 << '\n';
-    }
+    factorize(2025);
+    factorize(1260); // 多测试一个例子
     return 0;
 }

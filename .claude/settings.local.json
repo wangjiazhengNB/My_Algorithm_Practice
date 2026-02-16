@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc:*)",
+      "Bash(cat:*)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(powershell:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(if diff:*)",
+      "Bash(then echo \"配置文件完全相同\")",
+      "Bash(else echo \"配置文件有差异\")",
+      "Bash(fi:*)"
+    ]
+  }
+}
