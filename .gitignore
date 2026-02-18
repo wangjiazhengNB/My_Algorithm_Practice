@@ -1,0 +1,19 @@
+# 忽略 VS Code 本地配置（核心）
+.vscode/
+
+# 忽略 Claude AI 配置（核心）
+.claude/
+
+# 忽略 C++ 编译产物（可选，避免提交可执行文件/中间文件）
+*.exe
+*.out
+*.o
+*.obj
+*.dll
+build/
+bin/
+debug/
+
+# 忽略系统临时文件
+*.tmp
+*.bak
